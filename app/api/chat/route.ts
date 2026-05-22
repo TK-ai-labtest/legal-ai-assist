@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import fs from "fs/promises";
-import path from "path";
+// 🎯 ไม้อายุกรรม: ดึงคลังข้อมูลกฎหมายมาฝังเข้าตัวแอปโดยตรง ไม่ต้องผ่านระบบอ่านไฟล์ให้เสี่ยงบั๊ก
+import legalCases from "../../../data/data.json";
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,12 +11,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "กรุณากรอกข้อความ" }, { status: 400 });
     }
 
-    // 1. อ่านไฟล์คลังข้อสอบกฎหมายจาก data/data.json
-    const filePath = path.join(process.cwd(), "data", "data.json");
-    const jsonData = await fs.readFile(filePath, "utf-8");
-    const legalCases = JSON.parse(jsonData);
-
-    // 2. ค้นหาเคสที่ตรรกะคดีใกล้เคียงที่สุดจาก Keywords
+    // 2. ค้นหาเคสที่ตรรกะคดีใกล้เคียงที่สุดจาก Keywords (ระบบจะอ่านค่าจากข้อมูลที่ฝังไว้ด้านบนทันที)
     let matchedCase = null;
     for (const legalCase of legalCases) {
       const hasKeyword = legalCase.keywords.some((keyword: string) =>
@@ -31,7 +26,7 @@ export async function POST(req: NextRequest) {
     // 3. Guardrail: หากไม่พบกฎหมายที่เกี่ยวข้องในคลัง ให้ปฏิเสธการตอบทันทีเพื่อความปลอดภัย
     if (!matchedCase) {
       return NextResponse.json({
-        answer: "ขออภัยด้วยครับ เรื่องราวที่คุณสอบถามไม่อยู่ในคลังฐานข้อมูลกฎหมายที่ระบบนิติการ AI assist ได้รับอนุญาตให้ตรวจสอบในขณะนี้ ระบบขอปฏิเสธการวินิจฉัยเพื่อป้องกันความผิดพลาดทางกฎหมายและป้องกันไม่ให้ AI มโนข้อกฎหมายขึ้นมาเองครับ",
+        answer: "ขออภัยด้วยครับ เรื่องราวที่คุณสอบถามไม่อยู่ในคลังฐานข้อมูลกฎหมายที่ระบบ กิ๊กเก๋า Law AI assist ได้รับอนุญาตให้ตรวจสอบในขณะนี้ ระบบขอปฏิเสธการวินิจฉัยเพื่อป้องกันความผิดพลาดทางกฎหมายและป้องกันไม่ให้ AI มโนข้อกฎหมายขึ้นมาเองครับ",
         sourceUrl: null,
         sources: []
       });
@@ -40,13 +35,13 @@ export async function POST(req: NextRequest) {
     // 4. เชื่อมต่อสมองทองคำ Gemini
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ error: "ระบบหลังบ้านยังไม่ได้หยอดกุญแจ API KEY" }, { status: 500 });
+      return NextResponse.json({ error: "ระบบหลังบ้านยังไม่ได้หยอดกุญแจ API KEY ใน Environment Variables" }, { status: 500 });
     }
     const genAI = new GoogleGenerativeAI(apiKey);
 
     // มัดรวมบริบท Context โดยใส่ช่อง legal_reasoning เข้าไปด้วยเพื่อให้ Gemini เดินสำนวนตามแบบแผนเป๊ะๆ
     const systemPrompt = `
-      คุณคือ "นิติการ AI assist" ผู้ช่วยกฎหมายระดับสูง หน้าที่ของคุณคือวินิจฉัยข้อเท็จจริงที่ผู้ใช้ส่งมา โดยอิงตรรกะและแนวการให้เหตุผลจากคดีอ้างอิงที่กำหนดให้ด้านล่างนี้เท่านั้น ห้ามคิดเลขมาตราหรือหลักกฎหมายอื่นขึ้นมาเองเด็ดขาด
+      คุณคือ "กิ๊กเก๋า Law AI assist" ผู้ช่วยกฎหมายระดับสูง หน้าที่ของคุณคือวินิจฉัยข้อเท็จจริงที่ผู้ใช้ส่งมา โดยอิงตรรกะและแนวการให้เหตุผลจากคดีอ้างอิงที่กำหนดให้ด้านล่างนี้เท่านั้น ห้ามคิดเลขมาตราหรือหลักกฎหมายอื่นขึ้นมาเองเด็ดขาด
       
       [คดีอ้างอิงจากคลังข้อมูลกฎหมายของเรา]
       - ชื่อเรื่อง: ${matchedCase.title}
