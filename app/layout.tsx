@@ -12,6 +12,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="th">
+      <head>
+        {/* สั่งดึงช่างแต่งตัว Tailwind CSS มาสวมสไตล์ให้เว็บสวยงามทันที */}
+        <script src="https://cdn.tailwindcss.com"></script>
+      </head>
       <body style={{ margin: 0, padding: 0, backgroundColor: "#09090b" }}>
         {children}
       </body>
