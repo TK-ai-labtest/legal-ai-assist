@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
       2. ใช้ระดับภาษาเขียนที่เป็นทางการ รัดกุม และถูกต้องตามหลักการร่างคำฟ้อง/วินิจฉัยอรรถคดี
     `;
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     const finalPrompt = `${systemPrompt}\n\n[ข้อเท็จจริงปัจจุบันที่ผู้ใช้ส่งมาให้วินิจฉัย]:\n${message}`;
     
     const result = await model.generateContent(finalPrompt);
