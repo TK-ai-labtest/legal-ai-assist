@@ -298,7 +298,7 @@ export default function App() {
                 sources: [],
                 mode: currentMode?.stepIndex || 3
             });
-        } finaly {
+        } finally {
             setIsTyping(false);
         }
     };
