@@ -1,7 +1,7 @@
 import React from "react";
 
 export const metadata = {
-  title: "นิติการ AI assist",
+  title: "กิ๊กเก๋า law AI assist",
   description: "ผู้ช่วยกฎหมายระดับสูงประมวลผลด้วย AI",
 };
 
