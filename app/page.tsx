@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef, useCallback, useState } from "react";
 import {
     FileText,
