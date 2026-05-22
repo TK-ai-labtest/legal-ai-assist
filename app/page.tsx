@@ -346,7 +346,7 @@ export default function App() {
                                 <span className="text-[10px] tracking-widest text-violet-300 font-mono uppercase font-bold">Legal Intelligence Platform</span>
                             </div>
                             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/44 pb-2">
-                                นิติการ AI assist
+                                กิ๊กเก๋า Law AI assist
                             </h1>
                             <div className="w-48 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent mx-auto rounded-full" />
                         </motion.div>
