@@ -346,12 +346,12 @@ export default function App() {
                                 <span className="text-[10px] tracking-widest text-violet-300 font-mono uppercase font-bold">Legal Intelligence Platform</span>
                             </div>
                             <h1 className="text-4xl md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/44 pb-2">
-                                กิ๊กเก๋า Law AI assist
+                                Nitikarn AI assist
                             </h1>
                             <div className="w-48 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent mx-auto rounded-full" />
                         </motion.div>
                         <p className="text-xs md:text-sm text-zinc-400 max-w-md mx-auto leading-relaxed">
-                            พิมพ์คดีหรือข้อพิพาทที่ประสงค์วิเคราะห์ หรือใช้คำสั่งลัด <code className="bg-white/5 px-2 py-1 rounded-lg text-violet-400 font-mono text-xs border border-white/5">/</code> เพื่อเลือกส่วนงานกฎหมายเฉพาะจุด
+                            พิมพ์สิ่งที่อยากสืบค้นอัพเดทข้อมูลคดี หรือวิเคราะห์งานในส่วนสัญญา หรืองานส่วนแพ่งและความรับผิดทางละเมิด หรือใช้คำสั่งลัด <code className="bg-white/5 px-2 py-1 rounded-lg text-violet-400 font-mono text-xs border border-white/5">/</code> เพื่อเลือกส่วนงานกฎหมายเฉพาะจุด
                         </p>
                     </div>
 
