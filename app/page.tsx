@@ -55,7 +55,7 @@ const simulateLegalResponse = async (prompt: string, activeMode: any) => {
             { title: "เทคนิคการจัดการ Prompt Bias ในงานกฎหมายดิจิทัล", uri: "https://www.etda.or.th" }
         ];
     } else {
-        answer = `📦 **[4. Framework คดีศึกษาเทียบเคียงระดับสากล]**\n\n**คดีตัวอย่างในต่างประเทศและในไทย:**\n\n• 📦 **Amazon Buy Box Case:** คดีระดับโลกที่ Amazon จัดอันดับหน้าเว็บให้กล่องซื้อสินค้าเอื้อประโยชน์ต่อผู้ขายที่ยอมใช้บริการคลังสินค้าและการจัดส่งของ Amazon เอง ถือเป็นรากฐานของประเด็น Self-Preferencing\n• 🧡 **Shopee Express Case:** เคสในไทยที่มีการตั้งข้อสังเกตเรื่องการเลือกหรือผูกกล่องขนส่งในเครือให้ผู้ซื้อโดยอัตโนมัติ\n• 🚨 **บทเรียนรวบยอด:** แพลตฟอร์มมีสิทธิในทรัพย์สินระบบคอมพิวเตอร์ของตน แต่ไม่มีสิทธิใช้โครงสร้างพื้นฐานนั้นมาบิดเบือนกลไกตลาดเสree`;
+        answer = `📦 **[4. Framework คดีศึกษาเทียบเคียงระดับสากล]**\n\n**คดีตัวอย่างในต่างประเทศและในไทย:**\n\n• 📦 **Amazon Buy Box Case:** คดีระดับโลกที่ Amazon จัดอันดับหน้าเว็บให้กล่องซื้อสินค้าเอื้อประโยชน์ต่อผู้ขายที่ยอมใช้บริการคลังสินค้าและการจัดส่งของ Amazon เอง ถือเป็นรากฐานของประเด็น Self-Preferencing\n• 🧡 **Shopee Express Case:** เคสในไทยที่มีการตั้งข้อสังเกตเรื่องการเลือกหรือผูกกล่องขนส่งในเครือให้ผู้ซื้อโดยอัตโนมัติ\n• 🚨 **บทเรียนรวบยอด:** แพลตฟอร์มมีสิทธิในทรัพย์สินระบบคอมพิวเตอร์ของตน แต่ไม่มีสิทธิใช้โครงสร้างพื้นฐานนั้นมาบิดเบือนกลไกตลาดเสรี`;
         sources = [
             { title: "European Commission - Amazon Antitrust Case", uri: "https://ec.europa.eu" }
         ];
@@ -67,16 +67,7 @@ const simulateLegalResponse = async (prompt: string, activeMode: any) => {
         sources,
         mode: stepIndex
     };
-};
-    return {
-        answer,
-        sourceUrl,
-        sources,
-        mode: stepIndex
-    };
-};
-
-function useAutoResizeTextarea({ minHeight, maxHeight }: { minHeight: number, maxHeight: number }) {
+};function useAutoResizeTextarea({ minHeight, maxHeight }: { minHeight: number, maxHeight: number }) {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     const adjustHeight = useCallback(
