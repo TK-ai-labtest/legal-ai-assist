@@ -345,16 +345,15 @@ export default function App() {
                                 <Gavel className="w-4 h-4 text-violet-400" />
                                 <span className="text-[10px] tracking-widest text-violet-300 font-mono uppercase font-bold">Legal Intelligence Platform</span>
                             </div>
-                            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/44 pb-2">
-                                Nitikarn AI assist
-                            </h1>
-                            <div className="w-48 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent mx-auto rounded-full" />
-                        </motion.div>
-                        <p className="text-xs md:text-sm text-zinc-400 max-w-md mx-auto leading-relaxed">
-                            พิมพ์สิ่งที่อยากสืบค้นอัพเดทข้อมูลคดี หรือวิเคราะห์งานในส่วนสัญญา หรืองานส่วนแพ่งและความรับผิดทางละเมิด หรือใช้คำสั่งลัด <code className="bg-white/5 px-2 py-1 rounded-lg text-violet-400 font-mono text-xs border border-white/5">/</code> เพื่อเลือกส่วนงานกฎหมายเฉพาะจุด
-                        </p>
-                    </div>
-
+<h1 className="text-4xl md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/44 pb-2">
+                        Assist-Jarn Yok
+                    </h1>
+                    <div className="w-48 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent mx-auto rounded-full" />
+                </motion.div>
+                <p className="text-xs md:text-sm text-zinc-400 max-w-xl mx-auto leading-relaxed">
+                    Platform Antitrust Analyst: ระบบผู้ช่วยวิเคราะห์ข้อพิพาทเชิงกฎหมายและเศรษฐศาสตร์
+                    <br />จัดทำขึ้นพิเศษสำหรับ: <code className="bg-white/5 px-2 py-1 rounded-lg text-violet-400 font-mono text-xs border border-white/5">อาจารย์หยก (Dr. Peerapat)</code>
+                </p>
                     <div className="grid grid-cols-4 gap-2 bg-white/[0.01] border border-white/5 p-2 rounded-2xl">
                         {commandSuggestions.map((cmd) => {
                             const isCurrent = currentMode?.prefix === cmd.prefix;
