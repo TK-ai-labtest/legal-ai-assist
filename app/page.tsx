@@ -577,12 +577,87 @@ const selectCommandSuggestion = async (index: number) => {
                                     </div>
                                 </div>
 
-                                <div className="space-y-4">
-                                    <div className="text-sm md:text-base text-zinc-200 leading-relaxed whitespace-pre-wrap prose prose-invert max-w-none font-light">
-                                        {legalResult.answer}
-                                    </div>
-                                </div>
+<div className="space-y-6">
+    {legalResult.mode === 4 ? (
+        /* 🚀 โหมดวาด Flowchart พิเศษสำหรับปุ่ม 4. Framework */
+        <div className="space-y-6">
+            <div className="text-sm md:text-base text-zinc-200 leading-relaxed font-light border-b border-zinc-800 pb-3">
+                ⚖️ **[4. Framework คดีศึกษาเทียบเคียงระดับสากลและในไทย]**
+            </div>
+            
+            <div className="flex flex-col lg:flex-row items-stretch justify-between gap-3 pt-2">
+                
+                {/* Step 1 */}
+                <div className="flex-1 flex flex-col space-y-2">
+                    <div className="text-xs md:text-sm font-semibold text-emerald-400 font-mono">1. โยนคำถามเปิด (Initial Prompt)</div>
+                    <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-4 flex flex-col justify-between items-center text-center space-y-4 backdrop-blur-xl shadow-inner min-h-[160px]">
+                        <div className="text-xs text-zinc-300 leading-relaxed">โยนคำถามตรงเพื่อจับภาพรวมคดีแบบเร็ว แต่ต้องระวังอคติของระบบ (Search Bias)</div>
+                        <div className="flex gap-1 flex-wrap justify-center">
+                            <span className="text-[10px] bg-red-500/10 text-red-400 border border-red-500/20 px-2 py-0.5 rounded-md">Search Bias</span>
+                            <span className="text-[10px] bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded-md">ด่วนสรุปข้อกฎหมาย</span>
+                        </div>
+                    </div>
+                </div>
 
+                {/* Arrow 1 */}
+                <div className="flex items-center justify-center text-zinc-600 font-mono text-sm transform rotate-90 lg:rotate-0 py-1 font-bold">➔</div>
+
+                {/* Step 2 */}
+                <div className="flex-1 flex flex-col space-y-2">
+                    <div className="text-xs md:text-sm font-semibold text-amber-400 font-mono">2. แยก Fact & สิทธิ 3 ฝ่าย</div>
+                    <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-4 flex flex-col justify-between items-center text-center space-y-4 backdrop-blur-xl shadow-inner min-h-[160px]">
+                        <div className="text-xs text-zinc-300 leading-relaxed">สั่ง AI คิดย้อนศรแยก Fact ออกจากความเห็น เพื่อกางสิทธิและบทบาทในระบบนิเวศ</div>
+                        <div className="flex gap-1 flex-wrap justify-center">
+                            <span className="text-[10px] bg-amber-500/10 text-amber-300 border border-amber-500/20 px-1.5 py-0.5 rounded-md">แพลตฟอร์ม</span>
+                            <span className="text-[10px] bg-amber-500/10 text-amber-300 border border-amber-500/20 px-1.5 py-0.5 rounded-md">ร้านค้า</span>
+                            <span className="text-[10px] bg-amber-500/10 text-amber-300 border border-amber-500/20 px-1.5 py-0.5 rounded-md">ไรเดอร์</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Arrow 2 */}
+                <div className="flex items-center justify-center text-zinc-600 font-mono text-sm transform rotate-90 lg:rotate-0 py-1 font-bold">➔</div>
+
+                {/* Step 3 */}
+                <div className="flex-1 flex flex-col space-y-2">
+                    <div className="text-xs md:text-sm font-semibold text-violet-400 font-mono">3. เทียบเคียงคดีสากล</div>
+                    <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-4 flex flex-col justify-between items-center text-center space-y-4 backdrop-blur-xl shadow-inner min-h-[160px]">
+                        <div className="text-xs text-zinc-300 leading-relaxed">ดึงบรรทัดฐานคดีผูกขาดระดับโลกมาส่องกลไกจัดอันดับแอบเอื้อธุรกิจในเครือ</div>
+                        <div className="flex gap-1 flex-wrap justify-center">
+                            <span className="text-[10px] bg-violet-500/10 text-violet-300 border border-violet-500/20 px-2 py-0.5 rounded-md">Amazon Buy Box</span>
+                            <span className="text-[10px] bg-violet-500/10 text-violet-300 border border-violet-500/20 px-2 py-0.5 rounded-md">Shopee Express</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Arrow 3 */}
+                <div className="flex items-center justify-center text-zinc-600 font-mono text-sm transform rotate-90 lg:rotate-0 py-1 font-bold">➔</div>
+
+                {/* Step 4 */}
+                <div className="flex-1 flex flex-col space-y-2">
+                    <div className="text-xs md:text-sm font-semibold text-cyan-400 font-mono">4. ปรับเข้าบริบทกฎหมายไทย</div>
+                    <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-4 flex flex-col justify-between items-center text-center space-y-4 backdrop-blur-xl shadow-inner min-h-[160px]">
+                        <div className="text-xs text-zinc-300 leading-relaxed">วัดโครงสร้างพฤติกรรมตลาดจริงผ่านกรอบแนวทางปฏิบัติที่ไม่เป็นธรรมของ กขค.</div>
+                        <div className="flex gap-1 flex-wrap justify-center">
+                            <span className="text-[10px] bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 px-2 py-0.5 rounded-md">แนวทาง กขค. / TCCT</span>
+                            <span className="text-[10px] bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 px-2 py-0.5 rounded-md">ม. 50 & ม. 57</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div className="text-xs text-zinc-500 italic pt-2 border-t border-zinc-800/40">
+                🚨 บทเรียนรวบยอด: แพลตฟอร์มมีสิทธิในทรัพย์สินระบบคอมพิวเตอร์ของตน แต่ไม่มีสิทธิใช้โครงสร้างพื้นฐานนั้นมาบิดเบือนกลไกตลาดเสรีเพื่อปิดกั้นคู่แข่ง
+            </div>
+        </div>
+    ) : (
+        /* โหมดแสดงผลตัวอักษรปกติสำหรับปุ่ม 1, 2, 3 */
+        <div className="text-sm md:text-base text-zinc-200 leading-relaxed whitespace-pre-wrap prose prose-invert max-w-none font-light">
+            {legalResult.answer}
+        </div>
+    )}
+</div>
                                 {legalResult.sources && legalResult.sources.length > 0 && (
                                     <div className="mt-6 pt-5 border-t border-zinc-800/60 space-y-3">
                                         <div className="flex items-center gap-2 text-xs text-zinc-400 font-medium">
