@@ -170,41 +170,40 @@ export default function App() {
     const [currentMode, setCurrentMode] = useState<any>(null);
     const [legalResult, setLegalResult] = useState<any>(null);
 
-    const commandSuggestions = [
-        {
-            icon: <FileText className="w-4 h-4 text-emerald-400" />,
-            label: "ระยะเวลา/การยื่นบัญชี/สถานะล่าสุด",
-            description: "ตรวจสอบกรอบเวลา กำหนดส่ง และสถานะความคืบหน้า",
-            prefix: "/timeline",
-            color: "from-emerald-500/20 to-teal-500/5 border-emerald-500/20 text-emerald-400",
-            stepIndex: 1
-        },
-        {
-            icon: <Layers className="w-4 h-4 text-amber-400" />,
-            label: "งานด้านสัญญา/ส่วนแพ่ง",
-            description: "วิเคราะห์ข้อสัญญา ทรัพย์สิน และความรับผิดทางละเมิด",
-            prefix: "/contract",
-            color: "from-amber-500/20 to-orange-500/5 border-amber-500/20 text-amber-400",
-            stepIndex: 2
-        },
-        {
-            icon: <Scale className="w-4 h-4 text-violet-400" />,
-            label: "วิเคราะห์และฟันธง",
-            description: "วินิจฉัยปรับบทกฎหมายและประเมินแนวทางคำตัดสิน",
-            prefix: "/reason",
-            color: "from-violet-500/20 to-fuchsia-500/5 border-violet-500/20 text-violet-400",
-            stepIndex: 3
-        },
-        {
-            icon: <Presentation className="w-4 h-4 text-cyan-400" />,
-            label: "สรุปอินโฟกราฟิก (Summary Dashboard)",
-            description: "ย่อยสรุปภาพรวมคดีความและระดับความมั่นใจในหน้าเดียว",
-            prefix: "/summary",
-            color: "from-cyan-500/20 to-blue-500/5 border-cyan-500/20 text-cyan-400",
-            stepIndex: 4
-        },
-    ];
-
+const commandSuggestions = [
+    {
+        icon: <FileText className="w-4 h-4 text-emerald-400" />,
+        label: "1. Real Question?",
+        description: "วิเคราะห์คำถามจริงของเคสและเส้นแบ่งการใช้สิทธิ 3 ฝ่ายในธุรกิจ",
+        prefix: "/real-question",
+        color: "from-emerald-500/20 to-teal-500/5 border-emerald-500/20 text-emerald-400",
+        stepIndex: 1
+    },
+    {
+        icon: <Layers className="w-4 h-4 text-amber-400" />,
+        label: "2. ข้อสรุปเบื้องต้น",
+        description: "สรุปข้อกฎหมายแข่งขันทางการค้ามาตรา 50, 57 และพฤติกรรมตลาด",
+        prefix: "/conclusion",
+        color: "from-amber-500/20 to-orange-500/5 border-amber-500/20 text-amber-400",
+        stepIndex: 2
+    },
+    {
+        icon: <Scale className="w-4 h-4 text-violet-400" />,
+        label: "3. AI usage reflection",
+        description: "ถอดบทเรียนการสั่ง AI คิดย้อนศรแยก Fact เพื่อไม่ให้ข้ามประเด็น",
+        prefix: "/ai-reflection",
+        color: "from-violet-500/20 to-fuchsia-500/5 border-violet-500/20 text-violet-400",
+        stepIndex: 3
+    },
+    {
+        icon: <Presentation className="w-4 h-4 text-cyan-400" />,
+        label: "4. Framework",
+        description: "กรอบคิดคดี Self-Preferencing เทียบเคียงคดี Amazon และ Shopee",
+        prefix: "/framework",
+        color: "from-cyan-500/20 to-blue-500/5 border-cyan-500/20 text-cyan-400",
+        stepIndex: 4
+    },
+];
     useEffect(() => {
         if (value.startsWith('/') && !value.includes(' ')) {
             setShowCommandPalette(true);
