@@ -306,12 +306,18 @@ const commandSuggestions = [
         setAttachments(prev => (prev || []).filter((_, i) => i !== index));
     };
 
-    const selectCommandSuggestion = (index: number) => {
+const selectCommandSuggestion = async (index: number) => {
         const selectedCommand = commandSuggestions[index];
-        setValue(selectedCommand.prefix + ' ');
+        setValue(""); 
         setShowCommandPalette(false);
-    };
+        setIsTyping(true);
+        setLegalResult(null);
 
+        // บังคับให้ระบบดึงบทวิเคราะห์คดีแพลตฟอร์มขึ้นมาแสดงทันทีโดยไม่ผ่าน API เก่า
+        const simulatedData = await simulateLegalResponse(selectedCommand.prefix, selectedCommand);
+        setLegalResult(simulatedData);
+        setIsTyping(false);
+    };
     return (
         <div className="min-h-screen flex flex-col w-full items-center justify-start bg-[#09090b] text-white p-4 md:p-8 relative overflow-x-hidden font-sans select-none selection:bg-violet-500/30 selection:text-white">
             
