@@ -74,7 +74,8 @@ const simulateLegalResponse = async (prompt: string, activeMode: any) => {
         };
     }
 };
-};function useAutoResizeTextarea({ minHeight, maxHeight }: { minHeight: number, maxHeight: number }) {
+
+function useAutoResizeTextarea({ minHeight, maxHeight }: { minHeight: number, maxHeight: number }) {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     const adjustHeight = useCallback(
