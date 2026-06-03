@@ -355,17 +355,18 @@ const selectCommandSuggestion = async (index: number) => {
                     <br />จัดทำขึ้นพิเศษสำหรับ: <code className="bg-white/5 px-2 py-1 rounded-lg text-violet-400 font-mono text-xs border border-white/5">อาจารย์หยก (Dr. Peerapat)</code>
                 </p>
 </div>
-                        <div className="grid grid-cols-4 gap-2 bg-white/[0.01] border border-white/5 p-2 rounded-2xl">
-                        {commandSuggestions.map((cmd) => {
+<div className="grid grid-cols-4 gap-2 bg-white/[0.01] border border-white/5 p-2 rounded-2xl">
+                        {commandSuggestions.map((cmd, index) => {
                             const isCurrent = currentMode?.prefix === cmd.prefix;
                             const isProcessed = legalResult && (legalResult.mode >= cmd.stepIndex);
                             return (
                                 <div 
                                     key={cmd.prefix}
+                                    onClick={() => selectCommandSuggestion(index)}
                                     className={cn(
-                                        "flex flex-col items-center p-2 rounded-xl transition-all duration-300 text-center relative overflow-hidden",
+                                        "flex flex-col items-center p-2 rounded-xl transition-all duration-300 text-center relative overflow-hidden cursor-pointer hover:bg-white/[0.04] active:scale-95",
                                         isCurrent ? "bg-violet-500/10 border border-violet-500/20" : "border border-transparent",
-                                        isProcessed ? "opacity-100" : "opacity-40"
+                                        isProcessed ? "opacity-100" : "opacity-100"
                                     )}
                                 >
                                     <div className={cn(
