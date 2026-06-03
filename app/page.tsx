@@ -753,7 +753,7 @@ const selectCommandSuggestion = async (index: number) => {
                                     </div>
                                 )}
 
-{false && legalResult.sourceUrl && (!legalResult.sources || legalResult.sources.length === 0) && (
+{legalResult.mode !== 99 && legalResult.sourceUrl && (!legalResult.sources || legalResult.sources.length === 0) && (
                                     <div className="pt-4 border-t border-zinc-800/60 flex justify-end">
                                         <a
                                             href={legalResult.sourceUrl}
