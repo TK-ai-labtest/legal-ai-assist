@@ -34,39 +34,46 @@ const isSandboxEnv = () => {
 
 const simulateLegalResponse = async (prompt: string, activeMode: any) => {
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    const stepIndex = activeMode ? activeMode.stepIndex : 1;
+    const stepIndex = activeMode ? activeMode.stepIndex : null;
     let answer = "";
     let sources: any[] = [];
     const sourceUrl = "https://www.tcct.or.th";
 
-    if (stepIndex === 1 || prompt.startsWith("/real-question")) {
+    const cleanPrompt = prompt.trim();
+
+    if (stepIndex === 1 || cleanPrompt.startsWith("/real-question")) {
         answer = `⚖️ **[1. Real Question? โจทย์จริงและการแยกสิทธิ 3 ฝ่าย]**\n\n**คำถามหลักของคดี:** เส้นแบ่งของการใช้สิทธิบริหารจัดการแพลตฟอร์ม ไปเริ่มกระทบสิทธิในการแข่งขันอย่างเป็นธรรมของผู้อื่นอยู่ที่ใด?\n\n**โครงสร้างและบทบาท 3 ฝ่ายหลักในธุรกิจ:**\n1. 🏢 **ฝ่ายเจ้าของแพลตฟอร์ม:** มีสิทธิบริหารจัดการ Data และปรับ UX/UI ซึ่งเป็นทรัพย์สินของตนเอง\n2. 🍳 **ฝ่ายร้านค้าอิสระ:** มีสิทธิตามสัญญาที่ทำไว้กับแพลตฟอร์ม และมีสิทธิในการแข่งขันทางการค้าอย่างเป็นธรรม\n3. 🚴 **ฝ่ายขนส่ง/ไรเดอร์:** มีสิทธิในการเข้าถึงโอกาสในการแข่งขันและรับงานอย่างเท่าเทียม\n\n*กฎหมายมองว่า การใช้อำนาจเหนือตลาดเพื่อกีดกันคู่แข่ง (Market Foreclosure) เกินขอบเขตสิทธิตามสัญญา ถือเป็นการปฏิบัติทางการค้าที่ไม่เป็นธรรม*`;
         sources = [
             { title: "แนวทางการพิจารณาพฤติกรรมการค้าที่ไม่เป็นธรรม - กขค.", uri: "https://www.tcct.or.th" }
         ];
-    } else if (stepIndex === 2 || prompt.startsWith("/conclusion")) {
+        return { answer, sourceUrl, sources, mode: 1 };
+    } else if (stepIndex === 2 || cleanPrompt.startsWith("/conclusion")) {
         answer = `⚖️ **[2. ข้อสรุปเบื้องต้น & บริบทกฎหมายไทย]**\n\n**การปรับบทกฎหมายเชิงลึก (Legal Framework):**\nพฤติกรรมการปรับอัลกอริทึมเอื้อประโยชน์ให้ธุรกิจขนส่งในเครือตัวเอง (Self-Preferencing) เสี่ยงเข้าข่ายละเมิด **พ.ร.บ. การแข่งขันทางการค้า พ.ศ. 2560**\n\n• **มาตรา 50:** การใช้อำนาจเหนือตลาดอย่างไม่เป็นธรรม (หากแพลตฟอร์มมีส่วนแบ่งตลาดสูงเข้าเกณฑ์ควบคุม)\n• **มาตรา 57:** การปฏิบัติทางการค้าที่ไม่เป็นธรรม กีดกัน หรือจำกัดโอกาสร้านค้ารายเล็ก\n\n**ข้อสู้ทางเศรษฐศาสตร์:** แพลตฟอร์มอาจอ้างเรื่อง 'การเพิ่มประสิทธิภาพของบริการ' (Operational Efficiency) แต่สมาคมฯ หักล้างว่าสร้างความเสียหายและปิดกั้นการแข่งขันอย่างเป็นธรรมอย่างร้ายแรง`;
         sources = [
             { title: "พ.ร.บ. การแข่งขันทางการค้า พ.ศ. 2560 มาตรา 50 และ 57", uri: "https://www.krisdika.go.th" }
         ];
-    } else if (stepIndex === 3 || prompt.startsWith("/ai-reflection")) {
+        return { answer, sourceUrl, sources, mode: 2 };
+    } else if (stepIndex === 3 || cleanPrompt.startsWith("/ai-reflection")) {
         answer = `🧠 **[3. AI Usage Reflection: จุดเด่นของการคิดย้อนศร]**\n\n**บทสะท้อนการใช้ AI ร่วมวิเคราะห์:**\n• **ปัญหาแรกที่พบ (AI Bias):** การโยนคำถามตรง ๆ แบบด่วนสรุปจะเจอกับอคติของระบบ (Search Bias) ที่รีบข้ามข้อเท็จจริงพุ่งไปตัดสินความผิดตามมาตรา 50, 57 ทันทีจากคำถามนำเรื่องสมาคมฯ ร้องเรียน\n• **วิธีการต่อยอดและแก้ไข:** การสั่งให้ AI 'คิดย้อนศร' บังคับให้แยก Fact ออกมาก่อนกฎหมาย เพื่อแจกแจงสิทธิพื้นฐานและบทบาทของทั้ง 3 ฝ่ายให้ชัดเจน\n\n**ผลลัพธ์การพัฒนา:** ทำให้เห็นภาพรวมข้อพิพาทอย่างเป็นกลาง ไม่ด่วนสรุปตามคำถามนำ และมองเห็นแนวทางป้องกันข้อพิพาทที่พึงมีต่อสิทธิทุกฝ่ายอย่างแท้จริง`;
         sources = [
             { title: "เทคนิคการจัดการ Prompt Bias ในงานกฎหมายดิจิทัล", uri: "https://www.etda.or.th" }
         ];
-    } else {
+        return { answer, sourceUrl, sources, mode: 3 };
+    } else if (stepIndex === 4 || cleanPrompt.startsWith("/framework")) {
         answer = `📦 **[4. Framework คดีศึกษาเทียบเคียงระดับสากล]**\n\n**คดีตัวอย่างในต่างประเทศและในไทย:**\n\n• 📦 **Amazon Buy Box Case:** คดีระดับโลกที่ Amazon จัดอันดับหน้าเว็บให้กล่องซื้อสินค้าเอื้อประโยชน์ต่อผู้ขายที่ยอมใช้บริการคลังสินค้าและการจัดส่งของ Amazon เอง ถือเป็นรากฐานของประเด็น Self-Preferencing\n• 🧡 **Shopee Express Case:** เคสในไทยที่มีการตั้งข้อสังเกตเรื่องการเลือกหรือผูกกล่องขนส่งในเครือให้ผู้ซื้อโดยอัตโนมัติ\n• 🚨 **บทเรียนรวบยอด:** แพลตฟอร์มมีสิทธิในทรัพย์สินระบบคอมพิวเตอร์ของตน แต่ไม่มีสิทธิใช้โครงสร้างพื้นฐานนั้นมาบิดเบือนกลไกตลาดเสรี`;
         sources = [
             { title: "European Commission - Amazon Antitrust Case", uri: "https://ec.europa.eu" }
         ];
+        return { answer, sourceUrl, sources, mode: 4 };
+    } else {
+        return {
+            answer: `สวัสดีครับ^^ จานหยก เวอร์ชันนี้เป็นเวอร์ชัน beta ที่ผมพัฒนาขึ้นเพื่อรองรับการ Assist จารย์ แบบ second brain ครับ \n\nตอนนี้ในช่องนี้ยังตอบไม่ได้ แต่จานสามารถกดปุ่ม real question/สรุปเบื้องต้น/framework ได้เลยครับ คำตอบจะขึ้นมาเลย\n\n---\n\n👨‍💻 **แนะนำประวัติโดยย่อ (Resume):**\n• **ชื่อ:** ตามพล กาญจนสุธา (ตาม)\n• **การศึกษา:** จบนิติศาตร์ มธ.\n\n• **ประสบการณ์ทำงาน:** \n  - เคยทำ lawfirm / area พวกงานสัญญา / ที่ดิน\n  - เคยทำ บลป. ดูกฎเกณฑ์ กลต. มีความรู้เกี่ยวกับด้าน investment ทั้งฝั่ง fund manager + risk management ตามเกณฑ์ กลต.\n\n• **ความสนใจและทักษะเทคโนโลยี:** ชอบฝั่ง digital asset แต่ยังถนัดฝั่ง traditional มากกว่า แต่ก็พยายามเรียนรู้ฝั่ง digital มากขึ้น ชอบ AI เรียนรู้ร่วมกัน พัฒนา web / github+vercel\n\n• **จุดเด่นเฉพาะทาง:** ปัจจุบันทำงานหลากหลาย ทั้งฝั่งราชการ/เอกชน ถ้า area สัญญาจะถนัดสัญญาตามแบบภาครัฐ ตามรูปแบบที่อัยการฯ รีวิวไว้ ซึ่งออกเป็นประกาศฯ\n\n📢 **ความในใจ:** ชอบ content จาน ตาม FB ดูมีความรู้กว้างดีและมีเรื่องน่าคิดหลายมิติ สไตล์ firm ดีครับ เลยลองสมัครเข้ามา เพื่อมีโปรเจกต์ที่สามารถช่วยจารย์ได้ครับ\n\nขอบคุณครับ`,
+            sourceUrl: "https://facebook.com",
+            sources: [],
+            mode: 99
+        };
     }
-
-    return {
-        answer,
-        sourceUrl,
-        sources,
-        mode: stepIndex
-    };
+};
 };function useAutoResizeTextarea({ minHeight, maxHeight }: { minHeight: number, maxHeight: number }) {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
