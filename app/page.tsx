@@ -726,7 +726,7 @@ const selectCommandSuggestion = async (index: number) => {
         </div>
     )}
 </div>
-      {false && legalResult.sources && legalResult.sources.length > 0 && (
+      {legalResult.sources && legalResult.sources.length > 0 && (
                                     <div className="mt-6 pt-5 border-t border-zinc-800/60 space-y-3">
                                         <div className="flex items-center gap-2 text-xs text-zinc-400 font-medium">
                                             <BookOpen className="w-4 h-4 text-zinc-400" />
