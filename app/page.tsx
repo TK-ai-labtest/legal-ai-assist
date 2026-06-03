@@ -578,7 +578,91 @@ const selectCommandSuggestion = async (index: number) => {
                                 </div>
 
 <div className="space-y-6">
-    {legalResult.mode === 4 ? (
+    {legalResult.mode === 1 ? (
+        /* 👨‍💻 โหมดแยกส่วนคำถามมนุษย์ VS คำตอบ AI สำหรับปุ่ม 1. Real Question? */
+        <div className="space-y-5">
+            
+            {/* 🟢 การ์ดฝั่งมนุษย์ (Strategic Human Input) */}
+            <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-5 space-y-3 relative overflow-hidden backdrop-blur-xl shadow-inner">
+                <div className="absolute top-0 left-0 w-1 h-full bg-emerald-500" />
+                <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400 font-mono">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    👨‍💻 คำถามเชิงกลยุทธ์โดยผู้บริหาร (Human Input)
+                </div>
+                <div className="text-zinc-100 text-sm md:text-base font-semibold leading-relaxed">
+                    คำถามจริงของเคสนี้คืออะไร?
+                </div>
+                <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-light pl-3 border-l border-zinc-800">
+                    ในธุรกิจการขายสินค้าบนแพลตฟอร์ม มีผู้เล่นหลักที่คอยขับเคลื่อน/มีส่วนได้เสีย in ธุรกิจประเภทนี้กี่ฝ่าย และแต่ละฝ่ายมีสิทธิตามกฎหมาย/ตามสัญญา เพียงใด และเมื่อฝ่ายใดฝ่ายหนึ่ง เริ่มใช้สิทธิของตนเองกระทบฝ่ายอื่นแล้วนั้น เส้นแบ่งการใช้สิทธิของตนเองที่เริ่มกระทบสิทธิของฝ่ายอื่นกฎหมายมองเรื่องนี้อย่างไร
+                </p>
+            </div>
+
+            {/* ตัวเชื่อมโยงกลาง */}
+            <div className="flex items-center justify-center gap-2 text-[10px] text-zinc-600 font-mono tracking-widest uppercase">
+                <div className="w-12 h-px bg-zinc-800" />
+                <span>AI Processing Diagnostic</span>
+                <div className="w-12 h-px bg-zinc-800" />
+            </div>
+
+            {/* 🟣 การ์ดฝั่ง AI (Automated Legal Diagnosis) */}
+            <div className="bg-violet-500/[0.01] border border-violet-500/10 rounded-2xl p-5 space-y-3 relative overflow-hidden backdrop-blur-xl">
+                <div className="absolute top-0 left-0 w-1 h-full bg-violet-500" />
+                <div className="flex items-center gap-2 text-xs font-semibold text-violet-400 font-mono">
+                    <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
+                    🤖 ผลการวิเคราะห์และจัดหมวดหมู่ระบบนิเวศ (AI Response)
+                </div>
+                <div className="text-sm md:text-base text-zinc-200 leading-relaxed whitespace-pre-wrap font-light prose prose-invert max-w-none">
+                    {legalResult.answer}
+                </div>
+            </div>
+
+        </div>
+    ) : legalResult.mode === 2 ? (
+        /* 🔸 โหมดแยกส่วนคำถามมนุษย์ VS คำตอบ AI สำหรับปุ่ม 2. ข้อสรุปเบื้องต้น */
+        <div className="space-y-5">
+            
+            {/* 🟠 การ์ดฝั่งมนุษย์ (Strategic Human Insight) */}
+            <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-5 space-y-3 relative overflow-hidden backdrop-blur-xl shadow-inner">
+                <div className="absolute top-0 left-0 w-1 h-full bg-amber-500" />
+                <div className="flex items-center gap-2 text-xs font-semibold text-amber-400 font-mono">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                    👨‍💻 การสกัดสิทธิและเงื่อนไขสัญญาโดยมนุษย์ (Human Insight)
+                </div>
+                <div className="text-zinc-100 text-sm md:text-base font-semibold leading-relaxed">
+                    เบื้องต้นคำตอบที่ได้คือ มี 3 ฝ่ายหลัก คือ
+                </div>
+                
+                <div className="text-zinc-300 text-xs md:text-sm leading-relaxed font-light space-y-2 pl-3 border-l border-zinc-800/60">
+                    <p><strong>1. ฝ่ายเจ้าของแพลตฟอร์ม:</strong> มีสิทธิในการบริหารจัดการ Data การปรับ UX/UI ซึ่งเป็นทรัพย์สินของตัวเองได้</p>
+                    <p><strong>2. ฝ่ายร้านค้า:</strong> มีสิทธิตามสัญญาที่ได้ทำกับแพลตฟอร์มไว้ และมีสิทธิในการแข่งขันอย่างเป็นธรรม</p>
+                    <p><strong>3. ฝ่ายขนส่ง:</strong> มีสิทธิในการแข่งขันอย่างเป็นธรรม</p>
+                    <p className="text-zinc-400 pt-2 border-t border-white/5 text-[11px] md:text-xs italic bg-white/[0.01] p-2 rounded-lg mt-2">
+                        💡 <strong>ข้อสังเกตเพิ่มเติมเชิงคดี:</strong> กรณีตามปัญหาอาจแบ่งได้หลาย Case เช่น กรณีที่ร้านค้าทำสัญญาในตอนแรกซึ่งอาจไม่มีเงื่อนไขการเลือกขนส่ง หรืออาจเป็นกรณีที่แพลตฟอร์มแจ้งเงื่อนไขในสัญญาไว้ก่อนแล้ว ต้องตรวจสอบลึกลงไปว่าสิทธิตามสัญญามีรายละเอียดข้อผูกพันอย่างไร
+                    </p>
+                </div>
+            </div>
+
+            {/* ตัวเชื่อมโยงกลาง */}
+            <div className="flex items-center justify-center gap-2 text-[10px] text-zinc-600 font-mono tracking-widest uppercase">
+                <div className="w-12 h-px bg-zinc-800" />
+                <span>AI Statutory Mapping</span>
+                <div className="w-12 h-px bg-zinc-800" />
+            </div>
+
+            {/* 🟣 การ์ดฝั่ง AI (Automated Legal Diagnosis) */}
+            <div className="bg-violet-500/[0.01] border border-violet-500/10 rounded-2xl p-5 space-y-3 relative overflow-hidden backdrop-blur-xl">
+                <div className="absolute top-0 left-0 w-1 h-full bg-violet-500" />
+                <div className="flex items-center gap-2 text-xs font-semibold text-violet-400 font-mono">
+                    <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
+                    🤖 บทปรับกฎหมายการแข่งขันทางการค้าไทย (AI Response)
+                </div>
+                <div className="text-sm md:text-base text-zinc-200 leading-relaxed whitespace-pre-wrap font-light prose prose-invert max-w-none">
+                    {legalResult.answer}
+                </div>
+            </div>
+
+        </div>
+    ) : legalResult.mode === 4 ? (
         /* 🚀 โหมดวาด Flowchart พิเศษสำหรับปุ่ม 4. Framework */
         <div className="space-y-6">
             <div className="text-sm md:text-base text-zinc-200 leading-relaxed font-light border-b border-zinc-800 pb-3">
@@ -652,7 +736,7 @@ const selectCommandSuggestion = async (index: number) => {
             </div>
         </div>
     ) : (
-        /* โหมดแสดงผลตัวอักษรปกติสำหรับปุ่ม 1, 2, 3 */
+        /* โหมดแสดงผลตัวอักษรปกติสำหรับปุ่ม 3 (คงเดิมไว้ก่อนตามสเปก) */
         <div className="text-sm md:text-base text-zinc-200 leading-relaxed whitespace-pre-wrap prose prose-invert max-w-none font-light">
             {legalResult.answer}
         </div>
