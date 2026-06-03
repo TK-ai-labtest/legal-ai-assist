@@ -784,7 +784,7 @@ const selectCommandSuggestion = async (index: number) => {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-violet-500"></span>
                         </div>
-                        <span className="text-xs md:text-sm text-zinc-300 font-medium">นิติการ AI กำลังวิเคราะห์ปรับเข้าตัวบทกฎหมายและคลังคดี...</span>
+                        <span className="text-xs md:text-sm text-zinc-300 font-medium">AI กำลังวิเคราะห์ปรับเข้าตัวบทกฎหมายและคลังคดี...</span>
                     </motion.div>
                 )}
             </AnimatePresence>
