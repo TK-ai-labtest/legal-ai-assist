@@ -254,7 +254,7 @@ const commandSuggestions = [
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    const handleSendMessage = async () => {
+const handleSendMessage = async () => {
         if (!value.trim()) return;
 
         const userPrompt = value;
@@ -264,34 +264,9 @@ const commandSuggestions = [
         setLegalResult(null); 
 
         try {
-            if (isSandboxEnv()) {
-                const simulatedData = await simulateLegalResponse(userPrompt, currentMode);
-                setLegalResult(simulatedData);
-            } else {
-                const response = await fetch("/api/chat", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ message: userPrompt }),
-                });
-
-                const data = await response.json();
-
-                if (data.error || !data.answer) {
-                    setLegalResult({
-                        answer: "เกิดข้อผิดพลาดในการดึงข้อมูลทางกฎหมาย หรือไม่พบข้อมูลคดีที่เกี่ยวข้องในคลังระบบครับ",
-                        sourceUrl: null,
-                        sources: [],
-                        mode: currentMode?.stepIndex || 3
-                    });
-                } else {
-                    setLegalResult({
-                        answer: data.answer,
-                        sourceUrl: data.sourceUrl || null,
-                        sources: data.sources || [],
-                        mode: currentMode?.stepIndex || 3
-                    });
-                }
-            }
+            // บังคับเรียกใช้ simulation เสมอ ไม่ว่าจะรันที่ไหน เพื่อให้พ่นหน้า Resume ของคุณตามพลทันที
+            const simulatedData = await simulateLegalResponse(userPrompt, currentMode);
+            setLegalResult(simulatedData);
         } catch (err) {
             console.error(err);
             setLegalResult({
