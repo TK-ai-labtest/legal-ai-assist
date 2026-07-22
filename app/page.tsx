@@ -333,10 +333,10 @@ const selectCommandSuggestion = async (index: number) => {
                     </h1>
                     <div className="w-48 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent mx-auto rounded-full" />
                 </motion.div>
-                <p className="text-xs md:text-sm text-zinc-400 max-w-xl mx-auto leading-relaxed">
-                    Platform Antitrust Analyst: ระบบผู้ช่วยวิเคราะห์ข้อพิพาทเชิงกฎหมายและเศรษฐศาสตร์
-                    <br />จัดทำขึ้นพิเศษสำหรับ: <code className="bg-white/5 px-2 py-1 rounded-lg text-violet-400 font-mono text-xs border border-white/5">อาจารย์หยก (Dr. Peerapat)</code>
-                </p>
+<p className="text-xs md:text-sm text-zinc-400 max-w-xl mx-auto leading-relaxed">
+            Interactive Resume & Project Showcase — แบ่งงานเป็น 4 part ตามคำถามใน Google Form ลองทำเองแบบ demo ดูก่อน ขอให้สนุกกับการลองใช้ครับ ^^
+            <br />ขั้นตอนการใช้: <code className="bg-white/5 px-2 py-1 rounded-lg text-violet-400 font-mono text-xs border border-white/5">สามารถพิมพ์อะไรก็ได้ในกล่องข้อความ ระบบจะอธิบายการใช้แบบสั้นให้ครับ ^^</code>
+          </p>
 </div>
 <div className="grid grid-cols-4 gap-2 bg-white/[0.01] border border-white/5 p-2 rounded-2xl">
                         {commandSuggestions.map((cmd, index) => {
