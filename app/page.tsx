@@ -175,35 +175,39 @@ export default function App() {
 
 const commandSuggestions = [
     {
-        icon: <FileText className="w-4 h-4 text-emerald-400" />,
+        icon: <FileText className="w-4 h-4 text-sky-400" />,
         label: "1. Lab Overview",
         description: "ภาพรวม new ประจำวัน + ข้อมูลเชิงสถิติ",
+        descColor: "text-sky-300/90",
         prefix: "/lab-overview",
-        color: "from-emerald-500/20 to-teal-500/5 border-emerald-500/20 text-emerald-400",
+        color: "from-sky-500/20 to-blue-500/5 border-sky-500/20 text-sky-400",
         stepIndex: 1
     },
     {
-        icon: <Layers className="w-4 h-4 text-amber-400" />,
+        icon: <Layers className="w-4 h-4 text-red-400" />,
         label: "2. War Zone",
         description: "นั่งบนภูมองตำแหน่งและพื้นที่การรบ ผ่าน OI style old school",
+        descColor: "text-red-400 font-medium",
         prefix: "/war-zone",
-        color: "from-amber-500/20 to-orange-500/5 border-amber-500/20 text-amber-400",
+        color: "from-red-500/20 to-rose-500/5 border-red-500/20 text-red-400",
         stepIndex: 2
     },
     {
-        icon: <Scale className="w-4 h-4 text-violet-400" />,
+        icon: <Scale className="w-4 h-4 text-indigo-400" />,
         label: "3. Strategy Sandbox",
         description: "อยากมองแบบไหน เข้ามาเบิ่ง",
+        descColor: "text-indigo-300/90",
         prefix: "/strategy-sandbox",
-        color: "from-violet-500/20 to-fuchsia-500/5 border-violet-500/20 text-violet-400",
+        color: "from-indigo-500/20 to-violet-500/5 border-indigo-500/20 text-indigo-400",
         stepIndex: 3
     },
     {
-        icon: <Presentation className="w-4 h-4 text-cyan-400" />,
+        icon: <Presentation className="w-4 h-4 text-emerald-400" />,
         label: "4. Execution",
         description: "ฝึกหวด บนข้อมูลเท่าที่มี",
+        descColor: "text-emerald-300/90",
         prefix: "/execution",
-        color: "from-cyan-500/20 to-blue-500/5 border-cyan-500/20 text-cyan-400",
+        color: "from-emerald-500/20 to-teal-500/5 border-emerald-500/20 text-emerald-400",
         stepIndex: 4
     },
 ];
