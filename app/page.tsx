@@ -176,33 +176,33 @@ export default function App() {
 const commandSuggestions = [
     {
         icon: <FileText className="w-4 h-4 text-emerald-400" />,
-        label: "1. Real Question?",
-        description: "วิเคราะห์คำถามจริงของเคสและเส้นแบ่งการใช้สิทธิ 3 ฝ่ายในธุรกิจ",
-        prefix: "/real-question",
+        label: "1. Lab Overview",
+        description: "ภาพรวม new ประจำวัน + ข้อมูลเชิงสถิติ",
+        prefix: "/lab-overview",
         color: "from-emerald-500/20 to-teal-500/5 border-emerald-500/20 text-emerald-400",
         stepIndex: 1
     },
     {
         icon: <Layers className="w-4 h-4 text-amber-400" />,
-        label: "2. ข้อสรุปเบื้องต้น",
-        description: "สรุปข้อกฎหมายแข่งขันทางการค้ามาตรา 50, 57 และพฤติกรรมตลาด",
-        prefix: "/conclusion",
+        label: "2. War Zone",
+        description: "นั่งบนภูมองตำแหน่งและพื้นที่การรบ ผ่าน OI style old school",
+        prefix: "/war-zone",
         color: "from-amber-500/20 to-orange-500/5 border-amber-500/20 text-amber-400",
         stepIndex: 2
     },
     {
         icon: <Scale className="w-4 h-4 text-violet-400" />,
-        label: "3. AI usage reflection",
-        description: "ถอดบทเรียนการสั่ง AI คิดย้อนศรแยก Fact เพื่อไม่ให้ข้ามประเด็น",
-        prefix: "/ai-reflection",
+        label: "3. Strategy Sandbox",
+        description: "อยากมองแบบไหน เข้ามาเบิ่ง",
+        prefix: "/strategy-sandbox",
         color: "from-violet-500/20 to-fuchsia-500/5 border-violet-500/20 text-violet-400",
         stepIndex: 3
     },
     {
         icon: <Presentation className="w-4 h-4 text-cyan-400" />,
-        label: "4. Framework",
-        description: "กรอบคิดคดี Self-Preferencing เทียบเคียงคดี Amazon และ Shopee",
-        prefix: "/framework",
+        label: "4. Execution",
+        description: "ฝึกหวด บนข้อมูลเท่าที่มี",
+        prefix: "/execution",
         color: "from-cyan-500/20 to-blue-500/5 border-cyan-500/20 text-cyan-400",
         stepIndex: 4
     },
