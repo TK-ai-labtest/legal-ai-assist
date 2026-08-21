@@ -337,41 +337,43 @@ const selectCommandSuggestion = async (index: number) => {
         ส่งตรงข้อมูลจาก instatic lab กระชับ เข้าใจง่าย สิ่งสำคัญคือการฝึกตัดสินใจบนข้อมูลคุณภาพ ปรับ parameter ในแบบที่คุณเลือก และ adjust exposure ที่เหมาะสม -- เหมาะกับสายลุยไม่คุยนาน-- ถ้าพร้อมแล้ว ไปลองใช้กันครับ
     </p>
 </div>
-<div className="grid grid-cols-4 gap-2 bg-white/[0.01] border border-white/5 p-2 rounded-2xl">
-                        {commandSuggestions.map((cmd, index) => {
-                            const isCurrent = currentMode?.prefix === cmd.prefix;
-                            const isProcessed = legalResult && (legalResult.mode >= cmd.stepIndex);
-                            return (
-                                <div 
-                                    key={cmd.prefix}
-                                    onClick={() => selectCommandSuggestion(index)}
-                                    className={cn(
-                                        "flex flex-col items-center p-2 rounded-xl transition-all duration-300 text-center relative overflow-hidden cursor-pointer hover:bg-white/[0.04] active:scale-95",
-                                        isCurrent ? "bg-violet-500/10 border border-violet-500/20" : "border border-transparent",
-                                        isProcessed ? "opacity-100" : "opacity-100"
-                                    )}
-                                >
-                                    <div className={cn(
-                                        "w-8 h-8 rounded-lg flex items-center justify-center mb-1",
-                                        isCurrent ? "bg-violet-500/20" : isProcessed ? "bg-zinc-800" : "bg-transparent"
-                                    )}>
-                                        {cmd.icon}
-                                    </div>
-                                    <span className="text-[10px] md:text-xs font-medium block truncate max-w-full text-zinc-300">
-                                        {cmd.label.split(" (")[0]}
-                                    </span>
-                                    {isCurrent && (
-                                        <motion.div 
-                                            layoutId="activeIndicator"
-                                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-400"
-                                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                        />
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
-
+<div className="grid grid-cols-4 gap-2 bg-white/[0.01] border border-white/5 p-2.5 rounded-2xl">
+    {commandSuggestions.map((cmd, index) => {
+        const isCurrent = currentMode?.prefix === cmd.prefix;
+        const isProcessed = legalResult && (legalResult.mode >= cmd.stepIndex);
+        return (
+            <div 
+                key={cmd.prefix}
+                onClick={() => selectCommandSuggestion(index)}
+                className={cn(
+                    "flex flex-col items-center justify-start p-2.5 rounded-xl transition-all duration-300 text-center relative overflow-hidden cursor-pointer hover:bg-white/[0.04] active:scale-95 min-h-[95px]",
+                    isCurrent ? "bg-violet-500/10 border border-violet-500/20" : "border border-transparent",
+                    isProcessed ? "opacity-100" : "opacity-100"
+                )}
+            >
+                <div className={cn(
+                    "w-8 h-8 rounded-lg flex items-center justify-center mb-1.5 shrink-0",
+                    isCurrent ? "bg-violet-500/20" : isProcessed ? "bg-zinc-800" : "bg-white/5"
+                )}>
+                    {cmd.icon}
+                </div>
+                <span className="text-[11px] md:text-xs font-semibold block text-zinc-100 mb-1">
+                    {cmd.label}
+                </span>
+                <span className="text-[9px] md:text-[10px] text-zinc-400 block leading-tight font-light line-clamp-2">
+                    {cmd.description}
+                </span>
+                {isCurrent && (
+                    <motion.div 
+                        layoutId="activeIndicator"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-400"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                )}
+            </div>
+        );
+    })}
+</div>
                     <motion.div
                         className="relative backdrop-blur-3xl bg-[#0d0d11]/85 rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(139,92,246,0.08)] overflow-visible transition-all"
                     >
