@@ -317,26 +317,25 @@ const selectCommandSuggestion = async (index: number) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                 >
-                    <div className="text-center space-y-4">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.1, duration: 0.5 }}
-                            className="inline-block"
-                        >
-                            <div className="flex items-center gap-3 bg-white/[0.02] border border-white/5 px-4 py-2 rounded-2xl shadow-inner mb-3 justify-center">
-                                <Gavel className="w-4 h-4 text-violet-400" />
-                                <span className="text-[10px] tracking-widest text-violet-300 font-mono uppercase font-bold">Legal Intelligence Platform</span>
-                            </div>
-<h1 className="text-4xl md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/44 pb-2">
-                        Healthtech-Resume
-                    </h1>
-                    <div className="w-48 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent mx-auto rounded-full" />
-                </motion.div>
-<p className="text-xs md:text-sm text-zinc-400 max-w-xl mx-auto leading-relaxed">
-            Interactive Resume & Project Showcase — แบ่งงานเป็น 4 part ตามคำถามใน Google Form ลองทำเองแบบ demo ดูก่อน ขอให้สนุกกับการลองใช้ครับ ^^
-            <br />ขั้นตอนการใช้: <code className="bg-white/5 px-2 py-1 rounded-lg text-violet-400 font-mono text-xs border border-white/5">สามารถพิมพ์อะไรก็ได้ในกล่องข้อความ ระบบจะอธิบายการใช้แบบสั้นให้ครับ ^^</code>
-          </p>
+<div className="text-center space-y-4">
+    <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.1, duration: 0.5 }}
+        className="inline-block"
+    >
+        <div className="flex items-center gap-3 bg-white/[0.02] border border-white/5 px-4 py-2 rounded-2xl shadow-inner mb-3 justify-center">
+            <Sparkles className="w-4 h-4 text-violet-400" />
+            <span className="text-[10px] tracking-widest text-violet-300 font-mono uppercase font-bold">In Static tales platform</span>
+        </div>
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/44 pb-2">
+            investic-Lab
+        </h1>
+        <div className="w-48 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent mx-auto rounded-full" />
+    </motion.div>
+    <p className="text-xs md:text-sm text-zinc-400 max-w-xl mx-auto leading-relaxed">
+        ส่งตรงข้อมูลจาก instatic lab กระชับ เข้าใจง่าย สิ่งสำคัญคือการฝึกตัดสินใจบนข้อมูลคุณภาพ ปรับ parameter ในแบบที่คุณเลือก และ adjust exposure ที่เหมาะสม -- เหมาะกับสายลุยไม่คุยนาน-- ถ้าพร้อมแล้ว ไปลองใช้กันครับ
+    </p>
 </div>
 <div className="grid grid-cols-4 gap-2 bg-white/[0.01] border border-white/5 p-2 rounded-2xl">
                         {commandSuggestions.map((cmd, index) => {
